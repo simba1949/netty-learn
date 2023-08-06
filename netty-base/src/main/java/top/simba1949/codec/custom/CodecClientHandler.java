@@ -1,4 +1,4 @@
-package top.simba1949.codec;
+package top.simba1949.codec.custom;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;

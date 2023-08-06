@@ -1,4 +1,4 @@
-package top.simba1949.codec;
+package top.simba1949.codec.extentReplayingDecoder;
 
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
@@ -14,7 +14,7 @@ public class CodecClientInitializer extends ChannelInitializer<SocketChannel> {
 		ChannelPipeline pipeline = ch.pipeline();
 
 		// 加入一个出站的 handler，对数据进行编码
-		pipeline.addLast(new MyByteToLongDecoder());
+		pipeline.addLast(new MyByteToLongDecoderExtentReplayingDecoder());
 		pipeline.addLast(new MyLongToByteDecoder());
 
 		// 加入一个自定义的 handler，处理业务

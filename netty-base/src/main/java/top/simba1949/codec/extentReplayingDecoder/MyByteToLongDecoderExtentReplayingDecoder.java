@@ -1,8 +1,9 @@
-package top.simba1949.codec;
+package top.simba1949.codec.extentReplayingDecoder;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ByteToMessageDecoder;
+import io.netty.handler.codec.ReplayingDecoder;
 
 import java.util.List;
 
@@ -10,7 +11,7 @@ import java.util.List;
  * @author anthony
  * @version 2023/8/6 20:09
  */
-public class MyByteToLongDecoder extends ByteToMessageDecoder {
+public class MyByteToLongDecoderExtentReplayingDecoder extends ReplayingDecoder<Long> {
 
 	/**
 	 * @param ctx the {@link ChannelHandlerContext} which this {@link ByteToMessageDecoder} belongs to
@@ -21,10 +22,7 @@ public class MyByteToLongDecoder extends ByteToMessageDecoder {
 	@Override
 	protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {
 		System.out.println("MyByteToLongDecoder decode");
-
-		// long 类型是8个字节
-		if (in.readableBytes() >= 8) {
-			out.add(in.readLong());
-		}
+		// 这里继承 ReplayingDecoder，用户无需调用 readableBytes() 方法
+		out.add(in.readLong());
 	}
 }
