@@ -49,6 +49,5 @@ public class MyTCPServer {
             bossGroup.shutdownGracefully();
             workerGroup.shutdownGracefully();
         }
-
     }
 }

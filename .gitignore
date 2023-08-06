@@ -1,2 +1,4 @@
 # Project exclude paths
 /netty-base/target/
+*.idea/
+target/

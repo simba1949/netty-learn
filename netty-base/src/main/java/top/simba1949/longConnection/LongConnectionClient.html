@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form onsubmit="return false">
+    <textarea name="message" style="height:300px; width:300px"></textarea>
+    <input type="button" value="发送消息" onclick="send(this.form.message.value)">
+
+    <textarea id="responseTextId" style="height:300px; width:300px"></textarea>
+    <input type="button" value="清空消息" onclick="document.getElementById('responseTextId').value=''">
+</form>
+</body>
+<script>
+    var socket;
+    // 判断浏览器是否支持 websocket 编程
+    if (window.WebSocket){
+        socket = new WebSocket("ws://localhost:7777/hello");
+        // 
+        socket.onmessage = function(ev){
+            var responseText = document.getElementById("responseTextId");
+            responseText.value = responseText.value + "\n" + ev.data
+        }
+        // 相当于连接开启（感知到连接开启）
+        socket.onopen = function(ev){
+            var responseText = document.getElementById("responseTextId");
+            responseText.value = "连接开启了";
+        }
+        // 相当于连接关闭（感知到连接关闭）
+        socket.onclose = function(ev){
+            var responseText = document.getElementById("responseTextId");
+            responseText.value = responseText.value + "\n" + "连接关闭了...";
+        }
+    }else{
+        alert("当前浏览器不支持 WebSocket");
+    }
+
+    function send(message){
+        // 先判断 socket 是否创建好了
+        if(!window.socket){
+            alert("socket创建失败");
+            return;
+        }
+
+        if(socket.readyState == WebSocket.OPEN){
+            // 通过 socket 发送消息
+            socket.send(message);
+        }else{
+            alert("连接没有开启");
+        }
+    }
+</script>
+</html>

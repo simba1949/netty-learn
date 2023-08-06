@@ -10,6 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>netty-base</module>
+        <module>protobuf</module>
     </modules>
 
     <properties>
