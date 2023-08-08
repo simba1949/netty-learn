@@ -3,16 +3,13 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>top.simba1949</groupId>
+        <artifactId>rpc</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
 
-    <groupId>top.simba1949</groupId>
-    <artifactId>netty-learn</artifactId>
-    <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
-    <modules>
-        <module>netty-base</module>
-        <module>protobuf</module>
-        <module>rpc</module>
-    </modules>
+    <artifactId>rpc-provider</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -21,11 +18,10 @@
     </properties>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/io.netty/netty-all -->
         <dependency>
-            <groupId>io.netty</groupId>
-            <artifactId>netty-all</artifactId>
-            <version>4.1.94.Final</version>
+            <groupId>top.simba1949</groupId>
+            <artifactId>rpc-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 </project>
