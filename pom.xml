@@ -12,6 +12,7 @@
         <module>netty-base</module>
         <module>protobuf</module>
         <module>rpc</module>
+        <module>json</module>
     </modules>
 
     <properties>
