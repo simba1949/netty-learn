@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
  * @author anthony
  * @version 2023/8/6 15:17
  */
-public class LongConnectionServerHandler extends SimpleChannelInboundHandler<TextWebSocketFrame> {
+public class WebSocketServerHandler extends SimpleChannelInboundHandler<TextWebSocketFrame> {
 
 	@Override
 	protected void channelRead0(ChannelHandlerContext ctx, TextWebSocketFrame msg) throws Exception {

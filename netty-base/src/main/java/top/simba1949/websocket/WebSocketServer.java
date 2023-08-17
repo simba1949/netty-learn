@@ -17,7 +17,7 @@ import io.netty.handler.stream.ChunkedWriteHandler;
  * @author anthony
  * @version 2023/8/6 14:52
  */
-public class LongConnectionServer {
+public class WebSocketServer {
 	public static void main(String[] args) {
 		NioEventLoopGroup bossGroup = new NioEventLoopGroup();
 		NioEventLoopGroup workGroup = new NioEventLoopGroup();
@@ -47,7 +47,7 @@ public class LongConnectionServer {
 							 */
 							pipeline.addLast(new WebSocketServerProtocolHandler("/hello"));
 							// 自定义 handler，用于处理业务
-							pipeline.addLast(new LongConnectionServerHandler());
+							pipeline.addLast(new WebSocketServerHandler());
 						}
 					});
 
